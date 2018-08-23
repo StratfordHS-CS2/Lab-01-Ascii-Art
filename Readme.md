@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/StratfordHS-CS2/Lab-01-Ascii-Art-username.svg?token=L8ZuTUsXtxKqevAPVWLC&branch=master)](https://travis-ci.com/StratfordHS-CS2/Lab-01-Ascii-Art-username)
+[![Build Status](https://travis-ci.com/StratfordHS-CS2/lab-01-ascii-art-username.svg?token=L8ZuTUsXtxKqevAPVWLC&branch=master)](https://travis-ci.com/StratfordHS-CS2/lab-01-ascii-art-username)
 
 # Lab 01 - Ascii Art
 
