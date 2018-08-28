@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.InputStream;
 
 /**
  * The test class ArtTest.
@@ -16,6 +17,9 @@ import java.io.PrintStream;
 public class ArtTest
 {
     private OutputStream os;
+    private InputStream origIn = System.in;
+    private PrintStream origOut = System.out;
+    private String ls = System.getProperty("line.separator");
     
     /**
      * Default constructor for test class ArtTest.
@@ -36,7 +40,6 @@ public class ArtTest
         os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         System.setOut(ps);
-        String ls = System.getProperty("line.separator");
     }
 
     /**
@@ -47,8 +50,9 @@ public class ArtTest
     @After
     public void tearDown()
     {
-        PrintStream originalOut = System.out;
-        System.setOut(originalOut);
+        //PrintStream originalOut = System.out;
+        System.setOut(origOut);
+        System.setIn(origIn);
     }
     
     /**
@@ -61,9 +65,9 @@ public class ArtTest
         Art.asciiBox();
         //assertEquals("asciiBox() failed:", expectedOutput, os.toString());
         String output = os.toString();
-        int width = output.indexOf("\n") - 1;
+        int width = output.indexOf( ls );  // line seperator (ls) is the 26th character, so 25th location.
         assertEquals("Width should be 25:", 25, width);
-        assertEquals("Probably not 25x10:", 270, output.length());
+        assertEquals("Probably not 25x10:", 260, output.length());
     }
     
     /**
@@ -75,9 +79,8 @@ public class ArtTest
         Art.asciiBox2();
         String output = os.toString();
         
-        int width = output.indexOf("\n") - 1;
-
+        int width = output.indexOf( ls );  // line seperator (ls) is the 26th character, so 25th location.
         assertEquals("Width should be 25:", 25, width);
-        assertEquals("Probably not 25x10: ", 270, output.length());
+        assertEquals("Probably not 25x10:", 260, output.length());
     }
 }
